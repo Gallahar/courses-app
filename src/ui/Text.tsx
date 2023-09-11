@@ -8,5 +8,5 @@ interface TextProps {
 export const StyledText = styled('p')<TextProps>`
 	font-size: ${({ theme, $size }) => theme[$size]};
 	color: ${({ theme, $color }) =>
-		$color ? theme[$color] : theme.colors.textDark};
+		$color ? theme.colors[$color] : theme.colors.textDark};
 `

@@ -20,7 +20,7 @@ export const Button: FC<ButtonProps> = ({ children, icon, ...rest }) => {
 const StyledButton = styled('button')<ButtonProps>`
 	font-size: ${({ theme }) => theme.fsMd};
 	border-radius: ${({ theme }) => theme.borderRadius};
-	padding: 1rem;
+	padding: 1.05rem 1.6rem;
 	color: ${({ theme, $variant }) =>
 		$variant === 'filled' ? theme.colors.white : theme.colors.textDark};
 	background-color: ${({ theme, $variant }) =>
@@ -30,6 +30,7 @@ const StyledButton = styled('button')<ButtonProps>`
 	display: flex;
 	flex-direction: ${({ $order }) => $order};
 	justify-content: center;
+	line-height: 150%;
 	gap: 0.8rem;
 	align-items: center;
 	transition: background-color ${({ theme }) => theme.transDur} ease-in;

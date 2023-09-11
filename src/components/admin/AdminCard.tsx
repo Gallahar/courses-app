@@ -17,7 +17,7 @@ export const AdminCard: FC<AdminCardProps> = ({
 	_id,
 	onClickDelete,
 	title,
-	isLoading
+	isLoading,
 }) => {
 	return (
 		<CardWrapper>
@@ -57,7 +57,7 @@ const ActionsWrapper = styled('div')`
 `
 
 const DeleteButton = styled('button')`
-	padding: 1rem 0.8rem;
+	padding: 1.2rem;
 	border-radius: ${({ theme }) => theme.borderRadius};
 	border: 1px solid ${({ theme }) => theme.colors.deleteStroke};
 	background-color: ${({ theme }) => theme.colors.deleteBackground};
