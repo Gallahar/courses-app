@@ -1,10 +1,10 @@
 import { Test } from '@/types/test.interface'
-import { Button } from '@/ui/Button'
-import { CheckBox } from '@/ui/CheckBox'
-import { Input } from '@/ui/Input'
+import { Button } from '@/ui/Buttons/Button'
+import { CheckBox } from '@/ui/Inputs/CheckBox'
+import { Input } from '@/ui/Inputs/Input'
 import { Loader } from '@/ui/Loader'
-import { StyledText } from '@/ui/Text'
-import { TextArea } from '@/ui/TextArea'
+import { StyledText } from '@/ui/Typography/Text'
+import { TextArea } from '@/ui/Inputs/TextArea'
 import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
@@ -47,7 +47,6 @@ export const CourseForm: FC<CourseFormProps> = observer(
 							required: 'Название не может быть пустым',
 						})}
 						label='Название курса'
-						type='text'
 						defaultValue={title}
 						error={errors.title?.message}
 					/>

@@ -21,7 +21,7 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
 						>
 							<path
 								d='M6.30023 11.9L2.56689 8.16665L3.28356 7.44998L6.30023 10.4667L12.7002 4.06665L13.4169 4.78332L6.30023 11.9Z'
-								stroke='#5971C8'
+								stroke='#FFF'
 							/>
 						</svg>
 					</div>
@@ -50,7 +50,7 @@ const Input = styled('input')`
 		line-height: 150%;
 		user-select: none;
 		color: ${({ theme }) => theme.colors.textDark};
-		background-color: ${({ theme }) => theme.colors.white};
+		background-color: ${({ theme }) => theme.colors.surface};
 		border-radius: ${({ theme }) => theme.borderRadius};
 		transition: all 300ms ease-in;
 		svg {
@@ -58,7 +58,7 @@ const Input = styled('input')`
 				fill: none;
 				stroke-dasharray: 70;
 				stroke-dashoffset: 70;
-				transition: stroke-dashOffset 300ms linear;
+				transition: stroke-dashOffset 500ms ease-in-out;
 			}
 		}
 
@@ -70,29 +70,29 @@ const Input = styled('input')`
 			align-items: center;
 			border-radius: 4px;
 			border: 1px solid ${({ theme }) => theme.colors.inputOutline};
-			background-color: ${({ theme }) => theme.colors.inputBg};
-			transition: all 300ms ease-in;
+			background-color: ${({ theme }) => theme.colors.white};
+			transition: border 300ms ease-in;
 		}
 
 		&:hover {
-			background-color: ${({ theme }) => theme.colors.inputHover};
+			background-color: ${({ theme }) => theme.colors.white};
 			> div {
-				border: 1px solid ${({ theme }) => theme.colors.blue};
+				border: 1px solid ${({ theme }) => theme.colors.lightblue};
 			}
 		}
 	}
 
 	&:checked {
 		& + label {
-			color: ${({ theme }) => theme.colors.white};
-			background-color: ${({ theme }) => theme.colors.blue};
+			background-color: #e9ebf3;
 			svg {
 				path {
 					stroke-dashoffset: 0;
 				}
 			}
 			> div {
-				border: 1px solid ${({ theme }) => theme.colors.inputOutline};
+				background-color: ${({ theme }) => theme.colors.lightblue};
+				border: 1px solid ${({ theme }) => theme.colors.lightblue};
 			}
 		}
 	}

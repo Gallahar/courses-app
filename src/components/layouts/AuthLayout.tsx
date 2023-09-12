@@ -1,4 +1,4 @@
-import { Container } from '@/ui/Container'
+import { Container } from '@/ui/Containers/Container'
 import { Outlet } from 'react-router-dom'
 
 export const AuthLayout = () => {

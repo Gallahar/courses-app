@@ -13,4 +13,5 @@ const StyledHeading = styled('h2')`
 	text-align: center;
 	font-size: ${({ theme }) => theme.fsXl};
 	color: ${({ theme }) => theme.colors.textDark};
+	line-height: 150%;
 `

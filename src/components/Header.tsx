@@ -1,8 +1,8 @@
 import { QuitIcon } from '@/assets/icons/QuitIcon'
 import { useUser } from '@/lib/hooks/useUser'
-import { Button } from '@/ui/Button'
-import { Container } from '@/ui/Container'
-import { StyledText } from '@/ui/Text'
+import { Button } from '@/ui/Buttons/Button'
+import { Container } from '@/ui/Containers/Container'
+import { StyledText } from '@/ui/Typography/Text'
 import { observer } from 'mobx-react-lite'
 import { FC, PropsWithChildren } from 'react'
 import UserStore from 'src/stores/UserStore'
@@ -13,7 +13,7 @@ export const Header: FC<PropsWithChildren> = observer(({ children }) => {
 	const { logoutAction } = UserStore
 
 	return (
-		<HeaderWrapper>
+		<HeaderWrapper id='header'>
 			<Container $variant='flex'>
 				{children}
 				<InfoWrapper>

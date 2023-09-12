@@ -1,4 +1,4 @@
-import { CustomNavLink } from '@/ui/NavLink'
+import { CustomNavLink } from '@/ui/Links/NavLink'
 import { FC } from 'react'
 import { styled } from 'styled-components'
 

@@ -1,9 +1,9 @@
 import { FC, SVGProps } from 'react'
 
-export const AddIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
+export const AddIcon: FC<SVGProps<SVGSVGElement>> = ({ fill, ...rest }) => {
 	return (
 		<svg
-			{...props}
+			{...rest}
 			width='24'
 			height='24'
 			viewBox='0 0 24 24'
@@ -12,7 +12,7 @@ export const AddIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
 		>
 			<path
 				d='M11.25 12.75H5V11.25H11.25V5H12.75V11.25H19V12.75H12.75V19H11.25V12.75Z'
-				fill='white'
+				fill={fill ?? 'white'}
 			/>
 		</svg>
 	)

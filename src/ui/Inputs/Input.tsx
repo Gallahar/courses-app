@@ -3,7 +3,7 @@ import { PassHideIcon } from '@/assets/icons/PassHideIcon'
 import { PassShowIcon } from '@/assets/icons/PassShowIcon'
 import styled from 'styled-components'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	error?: string
 	label?: string
 	variant?: 'password' | 'field'
@@ -11,10 +11,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
 	({ error, label, variant, ...rest }, ref) => {
-		const [type, setType] = useState('password')
+		const [type, setType] = useState(variant ? 'password' : 'text')
 
 		return (
-			<InputWrapper>
+			<InputWrapper as={variant ? 'div' : 'label'}>
 				{label && label}
 				<StyledInput type={type} {...rest} ref={ref} />
 				{error && <StyledError>{error}</StyledError>}
@@ -36,13 +36,14 @@ const InputWrapper = styled('div')`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 12px;
+	gap: 0.8rem;
 	position: relative;
 `
 
 const StyledInput = styled('input')`
 	width: 100%;
-	padding: 1.9rem 1.6rem;
+	padding: 1.2rem 1.6rem;
+	line-height: 150%;
 	border-radius: ${({ theme }) => theme.borderRadius};
 	font-size: inherit;
 	background-color: ${({ theme }) => theme.colors.inputBg};
@@ -58,6 +59,6 @@ const StyledInput = styled('input')`
 const StyledError = styled('p')`
 	position: absolute;
 	color: ${({ theme }) => theme.colors.deleteText};
-	font-size: ${({ theme }) => theme.fsSm};
+	font-size: 1rem;
 	bottom: -20px;
 `

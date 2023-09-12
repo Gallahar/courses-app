@@ -10,6 +10,9 @@ import { ProtectedAdminRoute } from './ProtectedAdminRoute'
 import { AdminTests } from '@/pages/manage/AdminTests'
 import { ProtectedUserRoute } from './ProtectedUserRoute'
 import { EditCourse } from '@/pages/manage/EditCourse'
+import { CourseStat } from '@/pages/manage/CourseStat'
+import { TestStat } from '@/pages/manage/TestStat'
+import { EditTest } from '@/pages/manage/EditTest'
 
 export const router = createBrowserRouter([
 	{
@@ -42,7 +45,10 @@ export const router = createBrowserRouter([
 						path: 'courses',
 					},
 					{ element: <EditCourse />, path: 'courses/edit/:courseId' },
+					{ element: <CourseStat />, path: 'courses/:courseId' },
 					{ element: <AdminTests />, path: 'tests' },
+					{ element: <EditTest />, path: 'tests/edit/:testId' },
+					{ element: <TestStat />, path: 'tests/:testId' },
 				],
 			},
 		],

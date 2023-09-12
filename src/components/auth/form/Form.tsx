@@ -1,9 +1,9 @@
 import { useAuthForm } from './useForm'
 import { FC } from 'react'
-import { Title } from '@/ui/Title'
-import { Input } from '@/ui/Input'
-import { Button } from '@/ui/Button'
-import { ActionLink } from '@/ui/ActionLink'
+import { Title } from '@/ui/Typography/Title'
+import { Input } from '@/ui/Inputs/Input'
+import { Button } from '@/ui/Buttons/Button'
+import { ActionLink } from '@/ui/Links/ActionLink'
 import { Loader } from '@/ui/Loader'
 import { StyledForm, FormBody, FormFooter } from './form.styles'
 

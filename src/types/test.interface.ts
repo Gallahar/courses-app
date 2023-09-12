@@ -8,7 +8,7 @@ export interface Test {
 
 export type TestStatistics = Test & { results: Result[] }
 
-interface Question {
+export interface Question {
 	_id: string
 	question: string
 	answers: string[]

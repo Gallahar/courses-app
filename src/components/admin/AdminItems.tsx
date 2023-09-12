@@ -1,8 +1,8 @@
 import { AddIcon } from '@/assets/icons/AddIcon'
-import { Button } from '@/ui/Button'
-import { Section } from '@/ui/Section'
-import { StyledText } from '@/ui/Text'
-import { Title } from '@/ui/Title'
+import { Button } from '@/ui/Buttons/Button'
+import { Section } from '@/ui/Containers/Section'
+import { StyledText } from '@/ui/Typography/Text'
+import { Title } from '@/ui/Typography/Title'
 import { FC, ReactNode } from 'react'
 import { styled } from 'styled-components'
 

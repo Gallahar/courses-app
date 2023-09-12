@@ -1,6 +1,6 @@
 import { ArrowLeftIcon } from '@/assets/icons/ArrowLeftIcon'
-import { Button } from '@/ui/Button'
-import { StyledText } from '@/ui/Text'
+import { Button } from '@/ui/Buttons/Button'
+import { StyledText } from '@/ui/Typography/Text'
 import { FC, PropsWithChildren } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'

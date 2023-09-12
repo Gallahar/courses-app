@@ -1,7 +1,8 @@
 import { DeleteIcon } from '@/assets/icons/DeleteIcon'
-import { Button } from '@/ui/Button'
+import { Button } from '@/ui/Buttons/Button'
+import { DeleteButton } from '@/ui/Buttons/DeleteButton'
 import { Loader } from '@/ui/Loader'
-import { StyledText } from '@/ui/Text'
+import { StyledText } from '@/ui/Typography/Text'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -54,26 +55,4 @@ const CardWrapper = styled('div')`
 const ActionsWrapper = styled('div')`
 	display: flex;
 	gap: 0.8rem;
-`
-
-const DeleteButton = styled('button')`
-	padding: 1.2rem;
-	border-radius: ${({ theme }) => theme.borderRadius};
-	border: 1px solid ${({ theme }) => theme.colors.deleteStroke};
-	background-color: ${({ theme }) => theme.colors.deleteBackground};
-	transition: background-color ${({ theme }) => theme.transDur} ease-in;
-	> svg {
-		path {
-			transition: fill ${({ theme }) => theme.transDur} ease-in;
-		}
-	}
-	&:hover {
-		background-color: ${({ theme }) => theme.colors.deleteText};
-		border: 1px solid ${({ theme }) => theme.colors.deleteText};
-		> svg {
-			> path {
-				fill: ${({ theme }) => theme.colors.white};
-			}
-		}
-	}
 `

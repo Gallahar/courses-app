@@ -3,7 +3,7 @@ import { Header } from '../Header'
 import { NavLinks } from '../NavLinks'
 import { Outlet } from 'react-router-dom'
 import { useUser } from '@/lib/hooks/useUser'
-import { Section } from '@/ui/Section'
+import { Section } from '@/ui/Containers/Section'
 
 export const MainLayout = () => {
 	const { isAdmin } = useUser()

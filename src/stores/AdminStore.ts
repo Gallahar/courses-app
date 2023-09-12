@@ -1,7 +1,7 @@
 import { courseService } from '@/services/course.service'
 import { testService } from '@/services/test.service'
 import { Course, CourseStatistics } from '@/types/course.interface'
-import { UpdateCourseDto } from '@/types/dto.interface'
+import { UpdateCourseDto, UpdateTestDto } from '@/types/dto.interface'
 import { Test, TestStatistics } from '@/types/test.interface'
 import { AxiosError } from 'axios'
 import { makeAutoObservable, runInAction } from 'mobx'
@@ -147,8 +147,43 @@ class AdminStore {
 			}
 		}
 	}
+
+	updateTest = async (dto: UpdateTestDto) => {
+		try {
+			this.isLoading = true
+			const res = await testService.update(dto)
+			runInAction(() => {
+				this.tests = this.tests.map((test) =>
+					test._id === res._id ? res : test
+				)
+				this.isLoading = false
+			})
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				this.error = error.message
+			}
+			this.isLoading = false
+		}
+	}
+
 	selectTest = (id: string) => {
 		this.currentTest = this.tests.find((test) => test._id === id)
+	}
+
+	fetchTestStat = async (id: string) => {
+		try {
+			this.isLoading = true
+			const res = await testService.findByIdStatistics(id)
+			runInAction(() => {
+				this.testStat = res
+				this.isLoading = false
+			})
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				this.error = error.message
+			}
+			this.isLoading = false
+		}
 	}
 }
 
