@@ -6,6 +6,9 @@ import { Button } from '@/ui/Buttons/Button'
 import { ActionLink } from '@/ui/Links/ActionLink'
 import { Loader } from '@/ui/Loader'
 import { StyledForm, FormBody, FormFooter } from './form.styles'
+import { ValidationErrors } from '@/components/ValidationError'
+import { ErrorMessage } from '@hookform/error-message'
+import { registerErrors } from '@/config/constants'
 
 interface AuthFormProps {
 	type: 'reg' | 'log'
@@ -32,11 +35,23 @@ export const AuthForm: FC<AuthFormProps> = ({
 			<Title text={title} />
 			<FormBody>
 				<Input error={errors.email?.message} {...emailField} />
-				<Input
-					variant='password'
-					error={errors.password?.message}
-					{...passwordField}
-				/>
+				<Input {...passwordField}>
+					{type === 'reg' && (
+						<ErrorMessage
+							errors={errors}
+							name='password'
+							render={({ messages }) => {
+								return (
+									<ValidationErrors
+										title='Ваш пароль должен включать :'
+										errorObject={messages}
+										errors={registerErrors}
+									/>
+								)
+							}}
+						/>
+					)}
+				</Input>
 			</FormBody>
 			<FormFooter>
 				<Button

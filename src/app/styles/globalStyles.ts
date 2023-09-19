@@ -32,6 +32,7 @@ body{
 	padding: 0;
 	border: none;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 a,
@@ -113,22 +114,6 @@ label {
 	cursor: pointer;
 }
 
-.fixed{
-		background-color: ${({ theme }) => theme.colors.white};
-		position: fixed;
-		bottom: 0;
-		padding: 1.6rem 0;
-		width: 100%;
-        >div{
-            display: flex;
-        }
-	}
 
-	.default {
-		> div {
-			display: inline-flex;
-		}
-
-	}
 
 `

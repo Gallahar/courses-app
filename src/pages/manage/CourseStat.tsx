@@ -13,20 +13,20 @@ export const CourseStat = observer(() => {
 	const { courseId } = useParams()
 
 	useEffect(() => {
-		if (courseId && !courseStat) fetchCourseStat(courseId)
+		if (courseId) fetchCourseStat(courseId)
 	}, [courseId])
 
 	return (
 		<AdminPageWrapper
 			link='courses'
-			title={courseStat ? `Статистика курса "${courseStat.title}"` : 'Загрузка'}
+			title={courseStat ? `Статистика курса "${courseStat.title}"` : ''}
 		>
 			<StatsWrapper>
-				<StatHeading index={`№`} name='Пользователь' />
+				<StatHeading index={`№`} title='Пользователь' />
 				{isLoading && <FullScreenLoader />}
 				{courseStat &&
 					courseStat.userCompleted.map(({ email }, i) => (
-						<StatCard key={email} index={i + 1 + '.'} name={email} />
+						<StatCard key={email} index={i + 1 + '.'} title={email} />
 					))}
 			</StatsWrapper>
 		</AdminPageWrapper>

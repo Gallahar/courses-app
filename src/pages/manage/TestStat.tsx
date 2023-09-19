@@ -14,7 +14,7 @@ export const TestStat = observer(() => {
 	const { testId } = useParams()
 
 	useEffect(() => {
-		if (testId && !testStat) fetchTestStat(testId)
+		if (testId) fetchTestStat(testId)
 	}, [testId])
 
 	return (
@@ -22,23 +22,23 @@ export const TestStat = observer(() => {
 			outerWidth={1140}
 			innerWidth={1140}
 			link='tests'
-			title={testStat ? `Статистика курса "${testStat.title}"` : 'Загрузка'}
+			title={testStat ? `Статистика теста "${testStat.title}"` : ''}
 		>
 			<StatsWrapper>
 				<StatHeading
 					index={`№`}
-					name='Пользователь'
-					res='Результат'
-					date='Дата'
+					title='Пользователь'
+					secondCol='Результат'
+					thirdCol='Дата'
 				/>
 				{isLoading && <FullScreenLoader />}
 				{testStat &&
 					testStat.results.map(({ user, result, date }, i) => (
 						<StatCard
 							index={i + 1 + '.'}
-							name={user.email}
-							res={result}
-							date={dateFormat(date)}
+							title={user.email}
+							secondCol={result}
+							thirdCol={dateFormat(date)}
 						/>
 					))}
 			</StatsWrapper>

@@ -6,7 +6,6 @@ export const StyledForm = styled('form')`
 	width: 100%;
 	padding: 3.2em;
 	text-align: center;
-	grid-column: 4/10;
 `
 
 export const FormBody = styled('div')`

@@ -1,20 +1,26 @@
-import { userLinks, adminLinks } from '@/lib/utils/constants'
+import { userLinks, adminLinks } from '@/config/constants'
 import { Header } from '../Header'
 import { NavLinks } from '../NavLinks'
 import { Outlet } from 'react-router-dom'
 import { useUser } from '@/lib/hooks/useUser'
-import { Section } from '@/ui/Containers/Section'
+import UserStore from 'src/stores/UserStore'
+import { useEffect } from 'react'
 
 export const MainLayout = () => {
-	const { isAdmin } = useUser()
+	const user = useUser()
+	const { fetchCourses, fetchTests } = UserStore
+
+	useEffect(() => {
+		fetchCourses()
+		fetchTests()
+	}, [])
+
 	return (
 		<>
 			<Header>
-				<NavLinks links={isAdmin ? adminLinks : userLinks} />
+				<NavLinks links={user.isAdmin ? adminLinks : userLinks} />
 			</Header>
-			<Section>
-				<Outlet />
-			</Section>
+			<Outlet context={user} />
 		</>
 	)
 }

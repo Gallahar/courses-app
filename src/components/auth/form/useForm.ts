@@ -1,4 +1,4 @@
-import { emailRegexp } from '@/lib/utils/constants'
+import { emailRegexp, passRegexps } from '@/config/constants'
 import { userService } from '@/services/user.service'
 import { AuthDto } from '@/types/dto.interface'
 import { useState } from 'react'
@@ -8,14 +8,16 @@ import { useNavigate } from 'react-router-dom'
 export const useAuthForm = (type: 'reg' | 'log') => {
 	const [isLoading, setIsLoading] = useState(false)
 	const nav = useNavigate()
+	const { lowerCase, upperCase, word } = passRegexps
 
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm<AuthDto>({
-		mode: 'onBlur',
-		reValidateMode: 'onChange',
+		mode: 'onTouched',
+		reValidateMode: type === 'reg' ? 'onBlur' : 'onSubmit',
+		criteriaMode: type === 'reg' ? 'all' : 'firstError',
 	})
 
 	const onSubmit = handleSubmit(async (dto) => {
@@ -23,10 +25,10 @@ export const useAuthForm = (type: 'reg' | 'log') => {
 			setIsLoading(true)
 			if (type === 'reg') {
 				await userService.register(dto)
-				nav('/')
+				nav('/', { replace: true })
 			} else {
 				await userService.login(dto)
-				nav('/')
+				nav('/', { replace: true })
 			}
 		} catch (e) {
 			console.log(e)
@@ -35,20 +37,41 @@ export const useAuthForm = (type: 'reg' | 'log') => {
 		}
 	})
 
-	const passwordField = {
-		placeholder: 'Введите ваш пароль',
-		label: 'Пароль',
-		...register('password', {
-			required: 'это поле обязательно',
-			minLength: {
-				value: 6,
-				message: 'должен быть длиннее 6',
-			},
-			maxLength: {
-				value: 12,
-				message: 'должен быть короче 12',
-			},
-		}),
+	let passwordField
+
+	if (type === 'reg') {
+		passwordField = {
+			variant: 'password',
+			placeholder: 'Введите ваш пароль',
+			label: 'Пароль',
+			...register('password', {
+				validate: {
+					minLength: (value) =>
+						value.replace(/\s+/g, '').length > 7 || '8 символов',
+					upperCase: (value) => upperCase.test(value) || 'Заглавные буквы',
+					word: (value) => word.test(value) || 'Буквы и цифры',
+					lowerCase: (value) => lowerCase.test(value) || 'Строчные буквы',
+				},
+			}),
+		}
+	} else {
+		passwordField = {
+			error: errors.password?.message,
+			variant: 'password',
+			placeholder: 'Введите ваш пароль',
+			label: 'Пароль',
+			...register('password', {
+				required: 'это поле обязательно',
+				minLength: {
+					value: 4,
+					message: 'должен быть длиннее 4',
+				},
+				maxLength: {
+					value: 12,
+					message: 'должен быть короче 12',
+				},
+			}),
+		}
 	}
 
 	const emailField = {

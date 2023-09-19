@@ -21,6 +21,6 @@ export const userService = {
 	},
 
 	async profile(): Promise<Profile> {
-		return (await axios.post('auth/profile')).data
+		return (await axios.get('auth/profile')).data
 	},
 }

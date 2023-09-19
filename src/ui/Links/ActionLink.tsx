@@ -6,16 +6,20 @@ interface ActionLinkProps extends LinkProps {
 	$variant: 'auth' | 'default'
 	children: ReactNode
 	label?: string
+	$fs?: 'fsSm' | 'fsMd' | 'fsLg' | 'fsXl'
+	$padding?: string
+	as?: string
 }
 
 export const ActionLink: FC<ActionLinkProps> = ({
 	children,
 	label,
 	$variant,
+	as,
 	...rest
 }) => {
 	return (
-		<Wrapper>
+		<Wrapper as={as}>
 			{label && <StyledLabel htmlFor='#link'>{label}</StyledLabel>}
 			<StyledLink id='link' $variant={$variant} {...rest}>
 				{children}
@@ -25,13 +29,13 @@ export const ActionLink: FC<ActionLinkProps> = ({
 }
 
 const StyledLink = styled(Link)<ActionLinkProps>`
-	font-size: ${({ theme }) => theme.fsSm};
+	font-size: ${({ theme, $fs }) => ($fs ? theme[$fs] : theme.fsSm)};
 	color: ${({ theme, $variant }) =>
 		$variant === 'auth' ? theme.colors.lightblue : theme.colors.linkDefault};
 	font-weight: ${({ $variant }) => ($variant === 'auth' ? 400 : 500)};
 	position: relative;
 	overflow: hidden;
-	padding: 0.2em 0;
+	padding: ${({ $padding }) => $padding ?? '0.2em'};
 
 	&:after {
 		content: '';

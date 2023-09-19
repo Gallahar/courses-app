@@ -23,7 +23,7 @@ export const AdminPageWrapper: FC<PropsWithChildren<PageWrapperProps>> = ({
 		<Section $mWidth={outerWidth ?? 928}>
 			<Title text={title} />
 			<Section $margin='32px' $mWidth={innerWidth ?? 544}>
-				<Link style={{ display: 'inline-block' }} to={`/manage/${link}`}>
+				<Link to={`/manage/${link}`}>
 					<Button $variant='default' icon={<ArrowLeftIcon />}>
 						Назад
 					</Button>

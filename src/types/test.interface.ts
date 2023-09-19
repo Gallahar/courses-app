@@ -8,6 +8,13 @@ export interface Test {
 
 export type TestStatistics = Test & { results: Result[] }
 
+export interface UserTestStat {
+	_id: string
+	test: string
+	result: string
+	date: string
+}
+
 export interface Question {
 	_id: string
 	question: string

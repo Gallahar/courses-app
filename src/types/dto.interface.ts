@@ -13,7 +13,14 @@ export interface UpdateCourseDto {
 
 export interface UpdateTestDto {
 	_id: string
-	dto: Omit<Test, '_id'>
+	dto: {
+		title: string
+		questions: {
+			question: string
+			answers: string[]
+			correctAnswer: string
+		}[]
+	}
 }
 
 export interface CompleteTestDto {

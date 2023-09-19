@@ -31,7 +31,15 @@ export const CourseForm: FC<CourseFormProps> = observer(
 			register,
 			formState: { errors },
 			handleSubmit,
-		} = useForm<FormValues>({ mode: 'all', reValidateMode: 'onSubmit' })
+		} = useForm<FormValues>({
+			mode: 'onTouched',
+			reValidateMode: 'onSubmit',
+			defaultValues: {
+				title,
+				text,
+				tests: addedTests,
+			},
+		})
 
 		const { updateCourse, isLoading } = AdminStore
 
@@ -47,13 +55,11 @@ export const CourseForm: FC<CourseFormProps> = observer(
 							required: 'Название не может быть пустым',
 						})}
 						label='Название курса'
-						defaultValue={title}
 						error={errors.title?.message}
 					/>
 					<TextArea
 						{...register('text', { required: 'Название не может быть пустым' })}
 						label='Содержание курса'
-						defaultValue={text}
 						error={errors.text?.message}
 					/>
 				</InputsWrapper>
@@ -61,7 +67,6 @@ export const CourseForm: FC<CourseFormProps> = observer(
 					<StyledText $size='fsSm'>Добавить тесты к курсу</StyledText>
 					{tests.map(({ _id, title }) => (
 						<CheckBox
-							defaultChecked={addedTests.includes(_id)}
 							key={_id}
 							{...register('tests')}
 							label={title}

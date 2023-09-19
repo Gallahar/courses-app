@@ -36,7 +36,7 @@ const HeaderWrapper = styled('header')`
 	width: 100%;
 	padding: 1.2rem 0;
 	background-color: ${({ theme }) => theme.colors.white};
-	position: sticky;
+	position: fixed;
 	top: 0;
 	z-index: 10;
 `

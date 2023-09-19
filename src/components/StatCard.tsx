@@ -1,19 +1,19 @@
 import { StyledText } from '@/ui/Typography/Text'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
 interface StatCardProps {
-	name: string
-	res?: string
-	date?: string
+	title: string | ReactNode
+	secondCol?: string
+	thirdCol?: string
 	index: string
 	className?: string
 }
 
 export const StatCard: FC<StatCardProps> = ({
-	name,
-	res,
-	date,
+	title,
+	secondCol,
+	thirdCol,
 	index,
 	className,
 }) => {
@@ -21,10 +21,10 @@ export const StatCard: FC<StatCardProps> = ({
 		<CardWrapper className={className}>
 			<HeadWrapper>
 				<StyledText $size='fsMd'>{index}</StyledText>
-				<StyledText $size='fsMd'>{name}</StyledText>
+				<StyledText $size='fsMd'>{title}</StyledText>
 			</HeadWrapper>
-			{res && <StyledText $size='fsMd'>{res}</StyledText>}
-			{date && <StyledText $size='fsMd'>{date}</StyledText>}
+			{secondCol && <StyledText $size='fsMd'>{secondCol}</StyledText>}
+			{thirdCol && <StyledText $size='fsMd'>{thirdCol}</StyledText>}
 		</CardWrapper>
 	)
 }
@@ -34,7 +34,7 @@ const CardWrapper = styled('div')`
 	border-radius: ${({ theme }) => theme.borderRadius};
 	padding: 1.6rem;
 	display: grid;
-	grid-template-columns: 60% 20% 20%;
+	grid-template-columns: 70% 15% 15%;
 `
 
 const HeadWrapper = styled('div')`

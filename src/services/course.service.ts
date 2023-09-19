@@ -6,7 +6,7 @@ export const courseService = {
 	async findAll(): Promise<Course[]> {
 		return (await axios.get('/course/find')).data
 	},
-	async findById(id: string): Promise<Course> {
+	async findById(id: string): Promise<CourseStatistics> {
 		return (await axios.get(`/course/${id}`)).data
 	},
 	async complete(dto: { _id: string }): Promise<void> {

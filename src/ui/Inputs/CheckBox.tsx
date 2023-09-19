@@ -33,7 +33,7 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
 )
 
 const Wrapper = styled('div')`
-	max-width: fit-content;
+	width: 100%;
 `
 
 const Input = styled('input')`

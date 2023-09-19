@@ -1,23 +1,63 @@
 import { AddIcon } from '@/assets/icons/AddIcon'
 import { Button } from '@/ui/Buttons/Button'
+import { Loader } from '@/ui/Loader'
 import { FC } from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 interface FormControls {
 	onClick: () => void
-	questionsLength: number
+	isFixed: boolean
+	isLoading: boolean
+}
+
+const appear = keyframes`
+0%{
+    opacity: 0;
+    transform: translateY(100%)
+}
+
+100%{
+    opacity: 1;
+    transform: translateY(0%);
+}
+`
+
+const variants = {
+	fixed: css`
+		background-color: ${({ theme }) => theme.colors.white};
+		position: fixed;
+		bottom: 0;
+		padding: 1.6rem 0;
+		width: 100%;
+		animation: ${appear} 300ms ease-in;
+		> div {
+			display: flex;
+		}
+	`,
+
+	default: css`
+		> div {
+			display: inline-flex;
+		}
+	`,
 }
 
 export const FormControls: FC<FormControls> = ({
 	onClick,
-	questionsLength,
+	isFixed,
+	isLoading,
 }) => {
-	console.log(questionsLength)
 	return (
-		<div className={questionsLength > 2 ? 'fixed' : 'default'}>
+		<PortalWrapper $align={isFixed ? 'fixed' : 'default'}>
 			<ControlsWrapper>
-				<Button type='submit' form='TestForm' $variant='filled'>
-					Сохранить
+				<Button
+					icon={isLoading && <Loader />}
+					disabled={isLoading}
+					type='submit'
+					form='TestForm'
+					$variant='filled'
+				>
+					{isLoading ? 'Загрузка' : 'Сохранить'}
 				</Button>
 				<Button
 					onClick={onClick}
@@ -28,15 +68,17 @@ export const FormControls: FC<FormControls> = ({
 					Добавить вопрос
 				</Button>
 			</ControlsWrapper>
-		</div>
+		</PortalWrapper>
 	)
 }
 
+const PortalWrapper = styled('div')<{ $align: 'fixed' | 'default' }>`
+	${({ $align }) => variants[$align]}
+`
+
 const ControlsWrapper = styled('div')`
-	
 	gap: 0.8rem;
 	max-width: 544px;
 	margin-inline: auto;
 	width: 100%;
 `
-

@@ -11,7 +11,8 @@
 			"@/lib/*": ["src/lib/*"],
 			"@/ui/*": ["src/ui/*"],
 			"@/types/*": ["src/types/*"],
-			"@/assets/*": ["src/assets/*"]
+			"@/assets/*": ["src/assets/*"],
+			"@/config/*": ["src/config/*"]
 		},
 
 		"target": "ES2020",

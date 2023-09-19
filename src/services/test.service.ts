@@ -3,7 +3,7 @@ import { Test, TestStatistics } from '@/types/test.interface'
 import { axios } from '@/api/axios'
 
 export const testService = {
-	async findAll(): Promise<Test[]> {
+	async findAll(): Promise<TestStatistics[]> {
 		return (await axios.get('/test/find')).data
 	},
 	async findById(id: string): Promise<Test> {

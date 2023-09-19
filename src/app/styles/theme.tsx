@@ -44,7 +44,7 @@ const theme: ThemeType = {
 	borderRadius: '8px',
 	fsSm: '1.6rem',
 	fsMd: '1.8rem',
-	fsLg: '2.8rem',
+	fsLg: '2.4rem',
 	fsXl: '3.2rem',
 	transDur: '300ms',
 }

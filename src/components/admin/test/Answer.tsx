@@ -23,7 +23,8 @@ export const Answer = forwardRef<HTMLInputElement, AnswerProps>(
 
 const AnswerWrapper = styled('div')`
 	width: 100%;
-	display: flex;
+	display: grid;
+	grid-template-columns: 90% max-content;
 	gap: 0.8rem;
 	align-items: flex-end;
 `

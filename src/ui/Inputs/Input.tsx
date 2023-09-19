@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef, useState } from 'react'
+import { InputHTMLAttributes, ReactNode, forwardRef, useState } from 'react'
 import { PassHideIcon } from '@/assets/icons/PassHideIcon'
 import { PassShowIcon } from '@/assets/icons/PassShowIcon'
 import styled from 'styled-components'
@@ -6,11 +6,12 @@ import styled from 'styled-components'
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	error?: string
 	label?: string
-	variant?: 'password' | 'field'
+	variant?: string
+	children?: ReactNode
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-	({ error, label, variant, ...rest }, ref) => {
+	({ error, label, variant, children, ...rest }, ref) => {
 		const [type, setType] = useState(variant ? 'password' : 'text')
 
 		return (
@@ -18,6 +19,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				{label && label}
 				<StyledInput type={type} {...rest} ref={ref} />
 				{error && <StyledError>{error}</StyledError>}
+				{children}
 				{variant && type === 'text' && (
 					<PassHideIcon onClick={() => setType('password')} />
 				)}
@@ -38,6 +40,12 @@ const InputWrapper = styled('div')`
 	align-items: flex-start;
 	gap: 0.8rem;
 	position: relative;
+
+	> svg {
+		position: absolute;
+		right: 1.6rem;
+		top: 36px;
+	}
 `
 
 const StyledInput = styled('input')`

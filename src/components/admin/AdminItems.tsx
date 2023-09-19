@@ -1,5 +1,6 @@
 import { AddIcon } from '@/assets/icons/AddIcon'
 import { Button } from '@/ui/Buttons/Button'
+import { CardsList } from '@/ui/Containers/CardsList'
 import { Section } from '@/ui/Containers/Section'
 import { StyledText } from '@/ui/Typography/Text'
 import { Title } from '@/ui/Typography/Title'
@@ -63,9 +64,3 @@ const TextContainer = styled('div')`
 	justify-content: space-between;
 `
 
-const CardsList = styled('div')`
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 0.8rem;
-`

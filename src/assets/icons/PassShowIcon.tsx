@@ -4,7 +4,6 @@ export const PassShowIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (
 		<svg
 			{...props}
-			style={{ position: 'absolute', top: 45, right: 12, zIndex: 1 }}
 			width='24'
 			height='24'
 			viewBox='0 0 24 24'

@@ -1,4 +1,4 @@
-import { manageLinks } from '@/lib/utils/constants'
+import { manageLinks } from '@/config/constants'
 import { Header } from '../Header'
 import { NavLinks } from '../NavLinks'
 import { Outlet } from 'react-router-dom'

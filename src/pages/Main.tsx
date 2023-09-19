@@ -1,3 +1,5 @@
+import { FullScreenLoader } from '@/ui/Loader'
+
 export const MainPage = () => {
-	return <>Main page</>
+	return <FullScreenLoader />
 }

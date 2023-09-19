@@ -1,5 +1,5 @@
 import { Course } from './course.interface'
-import { Test } from './test.interface'
+import { UserTestStat } from './test.interface'
 
 export interface User {
 	email: string
@@ -14,5 +14,5 @@ export interface Profile {
 	_id: string
 	isAdmin: boolean
 	coursesCompleted: Course[]
-	testsCompleted: Test[]
+	testsCompleted: UserTestStat[]
 }

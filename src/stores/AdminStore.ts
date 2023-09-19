@@ -88,18 +88,24 @@ class AdminStore {
 	}
 
 	fetchCourseStat = async (id: string) => {
-		try {
-			this.isLoading = true
-			const res = await courseService.findByIdStatistics(id)
-			runInAction(() => {
-				this.courseStat = res
+		if (this.courseStat?._id !== id) {
+			this.courseStat = undefined
+
+			try {
+				this.isLoading = true
+				const res = await courseService.findByIdStatistics(id)
+				runInAction(() => {
+					this.courseStat = res
+					this.isLoading = false
+				})
+			} catch (error) {
+				if (error instanceof AxiosError) {
+					this.error = error.message
+				}
 				this.isLoading = false
-			})
-		} catch (error) {
-			if (error instanceof AxiosError) {
-				this.error = error.message
 			}
-			this.isLoading = false
+		} else {
+			return
 		}
 	}
 
@@ -171,18 +177,24 @@ class AdminStore {
 	}
 
 	fetchTestStat = async (id: string) => {
-		try {
-			this.isLoading = true
-			const res = await testService.findByIdStatistics(id)
-			runInAction(() => {
-				this.testStat = res
+		if (this.testStat?._id !== id) {
+			this.testStat = undefined
+
+			try {
+				this.isLoading = true
+				const res = await testService.findByIdStatistics(id)
+				runInAction(() => {
+					this.testStat = res
+					this.isLoading = false
+				})
+			} catch (error) {
+				if (error instanceof AxiosError) {
+					this.error = error.message
+				}
 				this.isLoading = false
-			})
-		} catch (error) {
-			if (error instanceof AxiosError) {
-				this.error = error.message
 			}
-			this.isLoading = false
+		} else {
+			return
 		}
 	}
 }

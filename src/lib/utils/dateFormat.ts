@@ -8,3 +8,4 @@ export const dateFormat = (dateStr: string) => {
 		minute: '2-digit',
 	})
 }
+

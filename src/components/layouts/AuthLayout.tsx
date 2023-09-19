@@ -1,10 +1,18 @@
-import { Container } from '@/ui/Containers/Container'
+import { Section } from '@/ui/Containers/Section'
 import { Outlet } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const AuthLayout = () => {
 	return (
-		<Container style={{ alignItems: 'center' }} $variant='grid'>
+		<AuthSection $mWidth={544} $margin='0' $padding='1.6rem'>
 			<Outlet />
-		</Container>
+		</AuthSection>
 	)
 }
+
+const AuthSection = styled(Section)`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+`

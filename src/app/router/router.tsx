@@ -13,6 +13,11 @@ import { EditCourse } from '@/pages/manage/EditCourse'
 import { CourseStat } from '@/pages/manage/CourseStat'
 import { TestStat } from '@/pages/manage/TestStat'
 import { EditTest } from '@/pages/manage/EditTest'
+import { Courses } from '@/pages/Courses'
+import { Tests } from '@/pages/Tests'
+import { Profile } from '@/pages/Profile'
+import { Course } from '@/pages/Course'
+import { Test } from '@/pages/Test'
 
 export const router = createBrowserRouter([
 	{
@@ -29,7 +34,14 @@ export const router = createBrowserRouter([
 			{
 				element: <MainLayout />,
 				path: '/',
-				children: [{ element: <MainPage />, path: '/' }],
+				children: [
+					{ element: <MainPage />, path: 'main' },
+					{ element: <Courses />, path: 'courses' },
+					{ element: <Course />, path: 'courses/:courseId' },
+					{ element: <Tests />, path: 'tests' },
+					{ element: <Test />, path: 'tests/:testId' },
+					{ element: <Profile />, path: 'profile' },
+				],
 			},
 		],
 	},
