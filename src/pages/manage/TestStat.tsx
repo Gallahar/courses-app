@@ -35,6 +35,7 @@ export const TestStat = observer(() => {
 				{testStat &&
 					testStat.results.map(({ user, result, date }, i) => (
 						<StatCard
+							key={date}
 							index={i + 1 + '.'}
 							title={user.email}
 							secondCol={result}
@@ -51,4 +52,6 @@ const StatsWrapper = styled('div')`
 	display: flex;
 	flex-direction: column;
 	gap: 0.8rem;
+
+	
 `

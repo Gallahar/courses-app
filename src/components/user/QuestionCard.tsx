@@ -31,7 +31,7 @@ export const QuestionCard: FC<QuestionCardProps> = ({
 		<QuestionWrapper>
 			<QuestionHeading>
 				<StyledText $size='fsMd'>{question}</StyledText>
-				<StyledText $size='fsMd'>{`Вопрос ${currentIndex}/${questionsLength}`}</StyledText>
+				<StyledText $size='fsMd'>{`Вопрос: ${currentIndex}/${questionsLength}`}</StyledText>
 			</QuestionHeading>
 			<AnswersList>
 				{answers.map((answer, i) => (
@@ -71,7 +71,10 @@ const QuestionHeading = styled('div')`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
+	${({ theme }) => theme.breakPoints.sm} {
+		gap: 2rem;
+	}
 `
 
 const AnswersList = styled('ol')`
@@ -81,9 +84,23 @@ const AnswersList = styled('ol')`
 	gap: 1.6rem;
 	font-size: 2rem;
 	padding-left: 3.2rem;
+	${({ theme }) => theme.breakPoints.sm} {
+		grid-template-columns: 1fr;
+		padding-left: 2rem;
+	}
 `
 
 const NextButtonWrapper = styled('div')`
+	margin-top: 1.2rem;
+	width: 100%;
 	display: flex;
 	justify-content: flex-end;
+	width: 100%;
+
+	${({ theme }) => theme.breakPoints.sm} {
+		justify-content: stretch;
+		> button {
+			width: 100%;
+		}
+	}
 `

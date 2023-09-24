@@ -1,4 +1,5 @@
 import { DeleteIcon } from '@/assets/icons/DeleteIcon'
+import { EditIcon } from '@/assets/icons/EditIcon'
 import { Button } from '@/ui/Buttons/Button'
 import { DeleteButton } from '@/ui/Buttons/DeleteButton'
 import { Loader } from '@/ui/Loader'
@@ -25,7 +26,9 @@ export const AdminCard: FC<AdminCardProps> = ({
 			<StyledText $size='fsMd'>{title}</StyledText>
 			<ActionsWrapper>
 				<Link to={`edit/${_id}`}>
-					<Button $variant='default'>Редактировать</Button>
+					<Button icon={<EditIcon />} $variant='default'>
+						Редактировать
+					</Button>
 				</Link>
 				<Link to={_id}>
 					<Button $variant='default'>Статистика</Button>
@@ -45,14 +48,28 @@ export const AdminCard: FC<AdminCardProps> = ({
 const CardWrapper = styled('div')`
 	background-color: ${({ theme }) => theme.colors.white};
 	border-radius: ${({ theme }) => theme.borderRadius};
-	padding: 0.8rem 1.6rem;
+	padding: 1.6rem;
+	gap: 1.6rem;
 	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 `
 
 const ActionsWrapper = styled('div')`
 	display: flex;
+	flex-wrap: wrap;
 	gap: 0.8rem;
+
+	${({ theme }) => theme.breakPoints.sm} {
+		width: 100%;
+		svg + span {
+			display: none;
+		}
+
+		> button {
+			margin-left: auto;
+		}
+	}
 `

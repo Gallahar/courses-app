@@ -15,4 +15,8 @@ const StyledHeading = styled('h2')<Omit<TitleProps, 'text'>>`
 	font-size: ${({ theme, $fs }) => ($fs ? theme[$fs] : theme.fsXl)};
 	color: ${({ theme }) => theme.colors.textDark};
 	line-height: 150%;
+
+	${({ theme }) => theme.breakPoints.sm} {
+		font-size: 22px;
+	}
 `

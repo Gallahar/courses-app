@@ -23,4 +23,8 @@ const LinksWrapper = styled('nav')`
 	justify-content: center;
 	align-items: center;
 	gap: 3.2rem;
+
+	${({ theme }) => theme.breakPoints.sm} {
+		display: none;
+	}
 `

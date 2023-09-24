@@ -58,7 +58,7 @@ export const useTestForm = ({ _id, title, questions }: TestFormProps) => {
 	}, [fields.length, prevHeight.current])
 
 	const addQuestion = () =>
-		append({ answers: [], correctAnswer: '', question: '' })
+		append({ answers: [''], correctAnswer: '', question: '' })
 
 	const removeQuestion = (questionIdx: number) => remove(questionIdx)
 
@@ -131,7 +131,7 @@ export const useTestForm = ({ _id, title, questions }: TestFormProps) => {
 		) => {
 			return {
 				error: errors.questions?.[questionIdx]?.answers?.[answerIdx]?.message,
-				key: answer + answerIdx,
+				key: answer + answerIdx + Date.now().toString(),
 				label: `Вариант ответа ${answerIdx + 1}`,
 				onClickRemove: () => removeAnswer(field, questionIdx, answerIdx),
 				...register(`questions.${questionIdx}.answers.${answerIdx}`, {

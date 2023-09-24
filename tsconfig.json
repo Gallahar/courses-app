@@ -12,7 +12,8 @@
 			"@/ui/*": ["src/ui/*"],
 			"@/types/*": ["src/types/*"],
 			"@/assets/*": ["src/assets/*"],
-			"@/config/*": ["src/config/*"]
+			"@/config/*": ["src/config/*"],
+			"@/stores/*": ["src/stores/*"]
 		},
 
 		"target": "ES2020",

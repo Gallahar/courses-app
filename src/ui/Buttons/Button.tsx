@@ -12,7 +12,7 @@ export const Button: FC<ButtonProps> = ({ children, icon, ...rest }) => {
 	return (
 		<StyledButton {...rest}>
 			{icon && icon}
-			{children}
+			<span>{children}</span>
 		</StyledButton>
 	)
 }
@@ -38,5 +38,9 @@ const StyledButton = styled('button')<ButtonProps>`
 	&:hover {
 		background-color: ${({ theme, $variant }) =>
 			$variant === 'filled' ? theme.colors.blue : theme.colors.inputHover};
+	}
+
+	${({ theme }) => theme.breakPoints.sm} {
+		padding: 1.2rem 1.6rem;
 	}
 `

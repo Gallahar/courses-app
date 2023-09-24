@@ -24,7 +24,7 @@ export const Answer = forwardRef<HTMLInputElement, AnswerProps>(
 const AnswerWrapper = styled('div')`
 	width: 100%;
 	display: grid;
-	grid-template-columns: 90% max-content;
+	grid-template-columns: auto max-content;
 	gap: 0.8rem;
 	align-items: flex-end;
 `
@@ -32,4 +32,8 @@ const AnswerWrapper = styled('div')`
 const DeleteButton = styled(Button)`
 	padding: 1.2rem 1.2rem;
 	max-height: 48px;
+
+	${({ theme }) => theme.breakPoints.sm} {
+		max-height: 43px;
+	}
 `

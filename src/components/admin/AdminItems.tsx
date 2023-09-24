@@ -19,10 +19,9 @@ export const AdminItems: FC<AdminItemsProps> = ({
 	onClickAdd,
 }) => {
 	return (
-		<StyledAdminSection>
+		<StyledAdminSection $padding='1.6rem'>
 			<Title text={title} />
 			<Button
-				style={{ alignSelf: 'flex-start' }}
 				onClick={onClickAdd}
 				icon={<AddIcon />}
 				$order='row'
@@ -49,6 +48,14 @@ const StyledAdminSection = styled(Section)`
 	display: flex;
 	flex-direction: column;
 	gap: 3.2rem;
+
+	> button {
+		align-self: flex-start;
+
+		${({ theme }) => theme.breakPoints.sm} {
+			align-self: unset;
+		}
+	}
 `
 
 const ActionsContainer = styled('div')`
@@ -63,4 +70,3 @@ const TextContainer = styled('div')`
 	display: flex;
 	justify-content: space-between;
 `
-

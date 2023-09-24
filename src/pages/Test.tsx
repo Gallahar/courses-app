@@ -40,7 +40,7 @@ export const Test = observer(() => {
 	}, [testId])
 
 	return (
-		<Section>
+		<Section $padding='1.6rem'>
 			{isLoading ? (
 				<FullScreenLoader />
 			) : (

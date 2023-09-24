@@ -27,11 +27,15 @@ const variants = {
 		background-color: ${({ theme }) => theme.colors.white};
 		position: fixed;
 		bottom: 0;
-		padding: 1.6rem 0;
+		padding: 1.6rem 1.6rem;
 		width: 100%;
 		animation: ${appear} 300ms ease-in;
 		> div {
 			display: flex;
+
+			${({ theme }) => theme.breakPoints.sm} {
+				flex-direction: column-reverse;
+			}
 		}
 	`,
 

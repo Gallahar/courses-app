@@ -16,6 +16,7 @@ export interface ThemeType {
 		deleteText: string
 		deleteBackground: string
 		linkDefault: string
+		lightGrey: string
 	}
 	borderRadius: string
 	fsSm: string
@@ -23,6 +24,9 @@ export interface ThemeType {
 	fsLg: string
 	fsXl: string
 	transDur: string
+	breakPoints: {
+		sm: string
+	}
 }
 
 const theme: ThemeType = {
@@ -40,6 +44,7 @@ const theme: ThemeType = {
 		deleteText: '#C93838',
 		deleteBackground: '#EBD3D3',
 		linkDefault: '#757575',
+		lightGrey: '#E9EBF3',
 	},
 	borderRadius: '8px',
 	fsSm: '1.6rem',
@@ -47,6 +52,9 @@ const theme: ThemeType = {
 	fsLg: '2.4rem',
 	fsXl: '3.2rem',
 	transDur: '300ms',
+	breakPoints: {
+		sm: '@media (max-width:450px)',
+	},
 }
 
 interface ThemeProps {

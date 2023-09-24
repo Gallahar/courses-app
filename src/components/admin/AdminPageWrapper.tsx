@@ -20,7 +20,7 @@ export const AdminPageWrapper: FC<PropsWithChildren<PageWrapperProps>> = ({
 	outerWidth,
 }) => {
 	return (
-		<Section $mWidth={outerWidth ?? 928}>
+		<Section $padding='1.6rem' $mWidth={outerWidth ?? 928}>
 			<Title text={title} />
 			<Section $margin='32px' $mWidth={innerWidth ?? 544}>
 				<Link to={`/manage/${link}`}>

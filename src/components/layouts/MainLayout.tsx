@@ -17,7 +17,7 @@ export const MainLayout = () => {
 
 	return (
 		<>
-			<Header>
+			<Header links={user.isAdmin ? adminLinks : userLinks}>
 				<NavLinks links={user.isAdmin ? adminLinks : userLinks} />
 			</Header>
 			<Outlet context={user} />

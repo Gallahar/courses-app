@@ -29,6 +29,10 @@ const NavContainer = styled('nav')`
 	display: flex;
 	align-items: center;
 	gap: 1.6rem;
+
+	${({ theme }) => theme.breakPoints.sm} {
+		display: none;
+	}
 `
 
 const Divider = styled('div')`

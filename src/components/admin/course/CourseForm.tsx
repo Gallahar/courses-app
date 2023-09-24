@@ -104,6 +104,10 @@ const StyledForm = styled('form')`
 	gap: 3.2rem;
 	> button {
 		align-self: flex-start;
+
+		${({ theme }) => theme.breakPoints.sm} {
+			align-self: unset;
+		}
 	}
 `
 

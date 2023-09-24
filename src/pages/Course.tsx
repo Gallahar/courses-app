@@ -59,9 +59,7 @@ export const Course = observer(() => {
 							{!course.userCompleted.some(({ _id }) => _id === user._id) && (
 								<Section $margin='1.2rem'>
 									<Button
-										onClick={() =>
-											courseService.complete({ _id: courseId ?? '' })
-										}
+										onClick={() => courseService.complete({ _id: course._id })}
 										$variant='filled'
 									>
 										Я прошел курс

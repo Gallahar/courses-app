@@ -1,11 +1,14 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 :root{
     font-size : 62.5%;
 	line-height: 150%;
+
+	${({ theme }) => theme.breakPoints.sm} {
+		font-size: 56%;
+	}
 }
 
 #root{

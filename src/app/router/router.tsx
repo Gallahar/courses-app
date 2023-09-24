@@ -2,7 +2,6 @@ import { AdminLayout } from '@/components/layouts/AdminLayout'
 import { AuthLayout } from '@/components/layouts/AuthLayout'
 import { MainLayout } from '@/components/layouts/MainLayout'
 import { LoginPage } from '@/pages/Login'
-import { MainPage } from '@/pages/Main'
 import { RegisterPage } from '@/pages/Register'
 import { AdminCourses } from '@/pages/manage/AdminCourses'
 import { createBrowserRouter } from 'react-router-dom'
@@ -33,14 +32,12 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				element: <MainLayout />,
-				path: '/',
 				children: [
-					{ element: <MainPage />, path: 'main' },
+					{ element: <Profile />, path: '/' },
 					{ element: <Courses />, path: 'courses' },
 					{ element: <Course />, path: 'courses/:courseId' },
 					{ element: <Tests />, path: 'tests' },
 					{ element: <Test />, path: 'tests/:testId' },
-					{ element: <Profile />, path: 'profile' },
 				],
 			},
 		],

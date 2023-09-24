@@ -17,7 +17,7 @@ export const AdminLayout = observer(() => {
 
 	return (
 		<>
-			<Header>
+			<Header links={manageLinks}>
 				<AdminNavigation>
 					<NavLinks links={manageLinks} />
 				</AdminNavigation>
