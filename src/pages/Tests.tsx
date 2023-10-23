@@ -10,7 +10,7 @@ import UserStore from 'src/stores/UserStore'
 import { styled } from 'styled-components'
 
 export const Tests = observer(() => {
-	const { tests, isLoading, error } = UserStore
+	const { tests, isLoading } = UserStore
 
 	return (
 		<Section $padding='1.6rem'>

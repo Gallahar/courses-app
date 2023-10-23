@@ -5,6 +5,7 @@ import axiosInstance, {
 	AxiosResponse,
 	InternalAxiosRequestConfig,
 } from 'axios'
+import { toast } from 'react-toastify'
 
 const axios = axiosInstance.create({
 	baseURL: import.meta.env.VITE_PUBLIC_API_URL,
@@ -29,7 +30,7 @@ const onRejectedResponse = async (
 ): Promise<AxiosError> => {
 	if (error.response) {
 		if ('message' in error.response.data) {
-			alert(error.response.data.message)
+			toast.error(error.response.data.message)
 		}
 	}
 

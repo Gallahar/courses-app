@@ -56,17 +56,15 @@ export const Profile = observer(() => {
 										secondCol='Результат'
 										thirdCol='Дата'
 									/>
-									{profile.testsCompleted.map(
-										({ _id, test, result, date }, i) => (
-											<StatCard
-												key={_id}
-												index={`${i + 1}.`}
-												title={test}
-												secondCol={result}
-												thirdCol={dateFormat(date)}
-											/>
-										)
-									)}
+									{profile.testsCompleted.map(({ test, result, date }, i) => (
+										<StatCard
+											key={date}
+											index={`${i + 1}.`}
+											title={test}
+											secondCol={result}
+											thirdCol={dateFormat(date)}
+										/>
+									))}
 								</CardsList>
 							</StatsContainer>
 						) : (

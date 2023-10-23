@@ -1,5 +1,4 @@
 import { Course } from './course.interface'
-import { Test } from './test.interface'
 
 export interface AuthDto {
 	email: string
