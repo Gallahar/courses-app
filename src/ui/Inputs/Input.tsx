@@ -44,7 +44,7 @@ const InputWrapper = styled('div')`
 	> svg {
 		position: absolute;
 		right: 1.6rem;
-		top: 36px;
+		top: 3.6rem;
 	}
 `
 

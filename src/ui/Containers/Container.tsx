@@ -27,7 +27,6 @@ export const Container: FC<ContainerProps> = ({ children, ...rest }) => {
 const StyledContainer = styled('div')<{ $variant: 'flex' | 'grid' }>`
 	${({ $variant }) => variants[$variant]};
 	width: 100%;
-	height: 100%;
 	max-width: 1140px;
 	padding: 0 1.6rem;
 	margin-inline: auto;

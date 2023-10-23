@@ -88,9 +88,9 @@ const MenuWrapper = styled('div')<{ $isClosed: boolean }>`
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
-	animation: ${slideIn} 350ms ease-in;
+	animation: ${slideIn} 300ms ease-out;
 	transform: ${({ $isClosed }) => `translateX(${$isClosed ? '-100%' : '0%'})`};
-	transition: transform 350ms ease-out;
+	transition: transform 300ms ease-out;
 
 	> button {
 		margin-top: auto;

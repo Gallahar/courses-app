@@ -77,7 +77,7 @@ export const LoaderSvg = styled(LoaderIcon)`
 
 const LoaderWrapper = styled('div')`
 	width: 100%;
-	height: 100%;
+	height: 50vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -11,12 +11,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 }
 
-#root{
-    height: 100%
-}
 body{
-  min-height: 100vh;
-  height: 100vh;
   box-sizing: border-box;
   overflow-x: hidden;
   color: ${({ theme }) => theme.colors.textDark};

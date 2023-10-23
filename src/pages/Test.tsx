@@ -70,7 +70,7 @@ export const Test = observer(() => {
 									<StyledText $size='fsLg'>
 										{`Ваш результат: ${correctAnswerCount.current}/${test.questions.length}`}
 									</StyledText>
-									<Link to={'/profile'}>
+									<Link to={'/'}>
 										<Button $variant='filled'>Все результаты</Button>
 									</Link>
 								</ResultWrapper>
