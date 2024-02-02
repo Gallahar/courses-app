@@ -3,12 +3,10 @@ import UserStore from '@/stores/UserStore'
 import { AuthDto } from '@/types/dto.interface'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
 
 export const useAuthForm = (type: 'reg' | 'log') => {
-	const { registerUser, loginUser, user } = UserStore
+	const { registerUser, loginUser } = UserStore
 	const [isLoading, setIsLoading] = useState(false)
-	const nav = useNavigate()
 	const { lowerCase, upperCase, word } = passRegexps
 
 	const {
@@ -23,7 +21,6 @@ export const useAuthForm = (type: 'reg' | 'log') => {
 
 	const onSubmit = handleSubmit(async (dto) => {
 		try {
-			
 			if (type === 'reg') {
 				registerUser(dto)
 			} else {
