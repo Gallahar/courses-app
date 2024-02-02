@@ -14,10 +14,6 @@ export const ProtectedUserRoute = observer(() => {
 		}
 	}, [])
 
-	if (user?.value) {
-		return <Outlet context={user} />
-	}
-
 	return user?.case({
 		pending: () => <FullScreenLoader />,
 		fulfilled: (user) => <Outlet context={user satisfies User} />,
