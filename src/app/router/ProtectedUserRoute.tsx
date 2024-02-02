@@ -9,8 +9,14 @@ export const ProtectedUserRoute = observer(() => {
 	const { refreshAction, user } = UserStore
 
 	useEffect(() => {
-		refreshAction()
+		if (!user) {
+			refreshAction()
+		}
 	}, [])
+
+	if (user?.value) {
+		return <Outlet context={user} />
+	}
 
 	return user?.case({
 		pending: () => <FullScreenLoader />,
@@ -18,5 +24,3 @@ export const ProtectedUserRoute = observer(() => {
 		rejected: () => <Navigate to='/auth/login' />,
 	})
 })
-
-

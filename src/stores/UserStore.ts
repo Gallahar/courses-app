@@ -4,7 +4,7 @@ import { courseService } from '@/services/course.service'
 import { testService } from '@/services/test.service'
 import { userService } from '@/services/user.service'
 import { Course, CourseStatistics } from '@/types/course.interface'
-import { CompleteTestDto } from '@/types/dto.interface'
+import { AuthDto, CompleteTestDto } from '@/types/dto.interface'
 import { Test, TestStatistics } from '@/types/test.interface'
 import { Profile, User } from '@/types/user.interface'
 import { AxiosError } from 'axios'
@@ -24,6 +24,16 @@ class UserStore {
 
 	constructor() {
 		makeAutoObservable(this)
+	}
+
+	registerUser = (dto: AuthDto) => {
+		this.user = fromPromise(userService.register(dto).then((data) => data.user))
+		router.navigate('/')
+	}
+
+	loginUser = (dto: AuthDto) => {
+		this.user = fromPromise(userService.login(dto).then((data) => data.user))
+		router.navigate('/')
 	}
 
 	refreshAction = () => {

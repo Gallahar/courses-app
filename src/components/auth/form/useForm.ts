@@ -1,11 +1,12 @@
 import { emailRegexp, passRegexps } from '@/config/constants'
-import { userService } from '@/services/user.service'
+import UserStore from '@/stores/UserStore'
 import { AuthDto } from '@/types/dto.interface'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 export const useAuthForm = (type: 'reg' | 'log') => {
+	const { registerUser, loginUser, user } = UserStore
 	const [isLoading, setIsLoading] = useState(false)
 	const nav = useNavigate()
 	const { lowerCase, upperCase, word } = passRegexps
@@ -22,13 +23,11 @@ export const useAuthForm = (type: 'reg' | 'log') => {
 
 	const onSubmit = handleSubmit(async (dto) => {
 		try {
-			setIsLoading(true)
+			
 			if (type === 'reg') {
-				await userService.register(dto)
-				nav('/', { replace: true })
+				registerUser(dto)
 			} else {
-				await userService.login(dto)
-				nav('/', { replace: true })
+				loginUser(dto)
 			}
 		} catch (e) {
 			console.log(e)

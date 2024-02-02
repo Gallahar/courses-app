@@ -9,6 +9,7 @@ import { StyledForm, FormBody, FormFooter } from './form.styles'
 import { ValidationErrors } from '@/components/ValidationError'
 import { ErrorMessage } from '@hookform/error-message'
 import { registerErrors } from '@/config/constants'
+import { observer } from 'mobx-react-lite'
 
 interface AuthFormProps {
 	type: 'reg' | 'log'
@@ -19,54 +20,49 @@ interface AuthFormProps {
 	textLink: string
 }
 
-export const AuthForm: FC<AuthFormProps> = ({
-	href,
-	title,
-	type,
-	buttonText,
-	labelLink,
-	textLink,
-}) => {
-	const { emailField, isLoading, onSubmit, passwordField, errors } =
-		useAuthForm(type)
+export const AuthForm: FC<AuthFormProps> = observer(
+	({ href, title, type, buttonText, labelLink, textLink }) => {
+		const { emailField, isLoading, onSubmit, passwordField, errors } =
+			useAuthForm(type)
 
-	return (
-		<StyledForm onSubmit={onSubmit}>
-			<Title text={title} />
-			<FormBody>
-				<Input error={errors.email?.message} {...emailField} />
-				<Input {...passwordField}>
-					{type === 'reg' && (
-						<ErrorMessage
-							errors={errors}
-							name='password'
-							render={({ messages }) => {
-								return (
-									<ValidationErrors
-										title='Ваш пароль должен включать :'
-										errorObject={messages}
-										errors={registerErrors}
-									/>
-								)
-							}}
-						/>
-					)}
-				</Input>
-			</FormBody>
-			<FormFooter>
-				<Button
-					$order='row'
-					disabled={isLoading}
-					icon={isLoading && <Loader />}
-					type='submit'
-					$variant='filled'
-				>
-					{isLoading ? 'загрузка..' : buttonText}
-				</Button>
-				<ActionLink to={href} $variant='auth' label={labelLink}>
-					{textLink}
-				</ActionLink>
-			</FormFooter>
-		</StyledForm>
-	)
-}
+		return (
+			<StyledForm onSubmit={onSubmit}>
+				<Title text={title} />
+				<FormBody>
+					<Input error={errors.email?.message} {...emailField} />
+					<Input {...passwordField}>
+						{type === 'reg' && (
+							<ErrorMessage
+								errors={errors}
+								name='password'
+								render={({ messages }) => {
+									return (
+										<ValidationErrors
+											title='Ваш пароль должен включать :'
+											errorObject={messages}
+											errors={registerErrors}
+										/>
+									)
+								}}
+							/>
+						)}
+					</Input>
+				</FormBody>
+				<FormFooter>
+					<Button
+						$order='row'
+						disabled={isLoading}
+						icon={isLoading && <Loader />}
+						type='submit'
+						$variant='filled'
+					>
+						{isLoading ? 'загрузка..' : buttonText}
+					</Button>
+					<ActionLink to={href} $variant='auth' label={labelLink}>
+						{textLink}
+					</ActionLink>
+				</FormFooter>
+			</StyledForm>
+		)
+	}
+)
